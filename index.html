@@ -44,9 +44,7 @@
     const invidious_baseurl = "https://redirect.invidious.io/";
 
     const video_id = matchYoutubeUrl(youtube_url);
-    console.log("vid: " + video_id);
-
-    const full_url = invidious_baseurl + video_id;
+    const full_url = (video_id ? (invidious_baseurl + video_id) : "");
     console.log(`full url: ${full_url}`);
 
     return full_url;
