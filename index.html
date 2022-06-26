@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube to Invidious URL Converter &lt;3</title>
+</head>
+<body>
+  <fieldset>
+    <legend>Convert a YouTube link into the corresponding link on your favorite Invidious instance:</legend>
+    
+    <label for="youtube_url">YouTube URL:</label> 
+    <input name="youtube_url" type="text" placeholder="YouTube URL"/> 
+
+    <button id="btn-convert-to-invidious">Convert YT to Invidious</button>
+
+    <div>
+      <label for="invidious_url">Invidious URL:</label>
+      <input name="invidious_url" type="text" placeholder="Invidious URL"/>
+      <button id="btn-visit-invidious-link">Visit Invidious URL</button>
+    </div>
+  </fieldset>
+  
+<script>
+  let invurl = ''
+
+  document.querySelector("button#btn-convert-to-invidious").addEventListener('click', function () {
+    submitHandlerConvert();
+  })
+
+  document.querySelector("button#btn-visit-invidious-link").addEventListener('click', () => {
+    window.location = invurl;
+  })
+  
+  function submitHandlerConvert() {
+    let ytnode = document.querySelector("input[name='youtube_url']")
+    console.log("yt text input: " + ytnode.value);
+
+    let invnode = document.querySelector("input[name='invidious_url'")
+    invurl = convertYoutubeToInvidiousUrl(ytnode.value)
+    invnode.value = invurl
+  }
+
+  function convertYoutubeToInvidiousUrl (youtube_url) {
+    const invidious_baseurl = "https://redirect.invidious.io/";
+
+    const video_id = matchYoutubeUrl(youtube_url);
+    console.log("vid: " + video_id);
+
+    const full_url = invidious_baseurl + video_id;
+    console.log(`full url: ${full_url}`);
+
+    return full_url;
+  }
+
+  function matchYoutubeUrl(url){
+    var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    return (url.match(p)) ? RegExp.$1 : false;
+  }
+</script>
+</body>
+</html>
