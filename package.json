@@ -1,0 +1,25 @@
+{
+  "name": "youtube-link-converter",
+  "version": "1.0.0",
+  "description": "A simple web page that converts Youtube links to Invidious links.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i input.css -o css/style.css",
+    "watch": "tailwindcss -i input.css -o css/style.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bblumenwiese/youtube-link-converter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bblumenwiese/youtube-link-converter/issues"
+  },
+  "homepage": "https://github.com/bblumenwiese/youtube-link-converter#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.1.4"
+  }
+}
