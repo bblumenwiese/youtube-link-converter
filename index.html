@@ -11,13 +11,13 @@
     <legend>Convert a YouTube link into the corresponding link on your favorite Invidious instance:</legend>
     
     <label for="youtube_url">YouTube URL:</label> 
-    <input name="youtube_url" type="text" placeholder="YouTube URL"/> 
+    <input id="youtube_url" type="text" placeholder="https://www.youtube.com/watch?v=videoId" />
 
     <button id="btn-convert-to-invidious">Convert YT to Invidious</button>
 
     <div>
       <label for="invidious_url">Invidious URL:</label>
-      <input name="invidious_url" type="text" placeholder="Invidious URL"/>
+      <input id="invidious_url" type="text" placeholder="https://redirect.invidious.io/videoId"/>
       <button id="btn-visit-invidious-link">Visit Invidious URL</button>
     </div>
   </fieldset>
@@ -34,10 +34,8 @@
   })
   
   function submitHandlerConvert() {
-    let ytnode = document.querySelector("input[name='youtube_url']")
-    console.log("yt text input: " + ytnode.value);
-
-    let invnode = document.querySelector("input[name='invidious_url'")
+    let ytnode = document.querySelector("#youtube_url")
+    let invnode = document.querySelector("#invidious_url")
     invurl = convertYoutubeToInvidiousUrl(ytnode.value)
     invnode.value = invurl
   }
